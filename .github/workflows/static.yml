@@ -29,6 +29,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
