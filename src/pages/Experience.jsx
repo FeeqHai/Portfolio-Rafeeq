@@ -55,7 +55,7 @@ const galleryItems = [
     year: "2022",
     image: mpp,
     description:
-      "Cultural exchange program representing UTeM in Seoul, South Korea.",
+      "Team Building Experience. Teaching me how to be a leader and manage a team effectively.",
   },
       
 ];
