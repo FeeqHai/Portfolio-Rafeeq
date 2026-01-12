@@ -15,6 +15,12 @@ import {
   ChevronDown,
   GraduationCap,
 } from "lucide-react";
+import websiteHosbesImg from "../assets/Website Hosbes.webp";
+import homePageWadImg from "../assets/HomePageWad.webp";
+import ipetroImg from "../assets/Ipetro.webp";
+import iptroDashboardImg from "../assets/iptroDashboard.webp";
+import ideasWeliImg from "../assets/ideasWeli.webp";
+import ideasWeliAboutImg from "../assets/ideasWeliAbout.webp";
 
 const projects = [
   {
@@ -25,8 +31,8 @@ const projects = [
       "A web-based food ordering system for Hospital Besut's Dietetics Unit, replacing traditional paper-based filing to streamline patient meal management for nurses and dietitians.",
     technologies: ["PHP", "Bootstrap", "SQL", "XAMPP"],
     link: "#",
-    image: "src/assets/Website Hosbes.webp",
-    hoverImage: "src/assets/HomePageWad.webp",
+    image: websiteHosbesImg,
+    hoverImage: homePageWadImg,
     icon: HospitalIcon,
   },
   {
@@ -37,8 +43,8 @@ const projects = [
       "A web-based system for managing and generating inspection reports with Firebase backend.",
     technologies: ["React", "Firebase", "Mantine UI"],
     link: "#",
-    image: "src/assets/Ipetro.webp",
-    hoverImage: "src/assets/iptroDashboard.webp",
+    image: ipetroImg,
+    hoverImage: iptroDashboardImg,
     icon: Factory,
   },
   {
@@ -49,8 +55,8 @@ const projects = [
       "A collaborative project with FSDK Dean from UMK. IDEAS is an entrepreneurship training platform for ASEAN women MSMEs, providing e-business training and capacity building.",
     technologies: ["WordPress", "Elementor", "PHP"],
     link: "https://ideasweli.com/",
-    image: "src/assets/ideasWeli.webp",
-    hoverImage: "src/assets/ideasWeliAbout.webp",
+    image: ideasWeliImg,
+    hoverImage: ideasWeliAboutImg,
     icon: GraduationCap,
   },
 ];

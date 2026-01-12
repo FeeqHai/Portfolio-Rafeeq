@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MagicBento from "../components/MagicBento"; // Import the new component
+import ftmkImg from "../assets/FTMK.webp";
+import budiPenyayangImg from "../assets/budiPenyayang.webp";
+import utemSeoulImg from "../assets/utemSeoul.webp";
+import pbtImg from "../assets/PBT.webp";
+import tvetAwardImg from "../assets/tvetAward.webp";
+import hensemPoliImg from "../assets/hensemPoli.webp";
+import smkZainabImg from "../assets/smkzainab2.webp";
+import smkImg from "../assets/smkIMG.webp";
+import smkImg2 from "../assets/smkIMG2.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,9 +24,9 @@ const academicHistory = [
     yearEnd: "Present",
     result: "Current CGPA: 3.49",
     images: [
-      "src/assets/FTMK.webp",
-      "src/assets/budiPenyayang.webp",
-      "src/assets/utemSeoul.webp",
+      ftmkImg,
+      budiPenyayangImg,
+      utemSeoulImg,
     ],
     story:
       "This is where my journey in software engineering truly began. At UTeM, I've been diving deep into programming, web development, and building real-world applications.",
@@ -30,9 +39,9 @@ const academicHistory = [
     yearEnd: "2024",
     result: "CGPA: 3.92",
     images: [
-      "src/assets/PBT.webp",
-      "src/assets/tvetAward.webp",
-      "src/assets/hensemPoli.webp",
+      pbtImg,
+      tvetAwardImg,
+      hensemPoliImg,
     ],
     story:
       "A pivotal year of preparation and growth. Completing Diploma in Information Technology (Technology Digital) with distinction built the foundation for my analytical thinking.",
@@ -45,9 +54,9 @@ const academicHistory = [
     yearEnd: "2020",
     result: "Result: 2 A-, 2 B+, 2 B, 1 C+, 1 D, 1 E",
     images: [
-      "src/assets/smkzainab2.webp",
-      "src/assets/smkIMG.webp",
-      "src/assets/smkIMG2.webp",
+      smkZainabImg,
+      smkImg,
+      smkImg2,
     ],
     story:
       "Five formative years that shaped who I am today. From discovering my passion for computers to excelling in the Science and Technology Stream.",

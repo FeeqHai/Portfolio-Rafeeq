@@ -3,12 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BounceCards from "../components/BounceCards";
 
+// Import images properly
+import internImg from "../assets/intern.webp";
+import handsomeImg from "../assets/handsome.webp";
+import profilePicWsImg from "../assets/profile-pic-ws.webp";
+import coolPoseImg from "../assets/cool-pose.webp";
+import profilePictureImg from "../assets/ProfilePicture.webp";
+
+
 const images = [
-  "src/assets/intern.webp",
-  "src/assets/handsome.webp",
-  "src/assets/profile-pic-ws.webp",
-  "src/assets/cool-pose.webp",
-  "src/assets/ProfilePicture.webp",
+  internImg,
+  handsomeImg,
+  profilePicWsImg,
+  coolPoseImg,
+  profilePictureImg,
 ];
 
 function Home() {
