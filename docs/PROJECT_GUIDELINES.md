@@ -34,6 +34,10 @@ Example AI request: "Update the Projects page with the details I provide. Follow
 
 ## Content and code conventions
 
+### Updating the resume
+
+`src/pages/Resume.jsx` uses `src/assets/Mohamad_Rafeeq_Haiqal_Resume.pdf` for both Open PDF and Download PDF. The scrollable preview is `src/assets/resume-preview.webp`, rendered from that same PDF so it works without a browser PDF plugin, including on mobile. When replacing the PDF, regenerate the preview from the new document, check every page (add more preview pages if the document grows), and update the page count, image dimensions, and displayed update date. Preserve the original PDF bytes. Verify zoom, scrolling, opening, and downloading before submitting.
+
 - Preserve accurate descriptions, dates, qualifications, and contact details. Ask for missing facts instead of inventing them.
 - Use functional React components and surrounding formatting. Reuse existing components; avoid unrelated rewrites or dependencies.
 - Keep hooks at the top level. Use complete effect dependencies and clean up effects on unmount.
