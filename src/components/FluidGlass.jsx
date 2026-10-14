@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const FluidGlass = ({
   children,

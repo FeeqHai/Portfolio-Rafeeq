@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 
 const DEFAULT_PARTICLE_COUNT = 6; // Reduced count for performance with images
@@ -49,7 +49,6 @@ const ParticleCard = ({
   particleCount = DEFAULT_PARTICLE_COUNT,
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
-  clickEffect = false,
   enableMagnetism = false,
 }) => {
   const cardRef = useRef(null);
@@ -352,7 +351,6 @@ const GlobalSpotlight = ({
 
 const MagicBento = ({
   images = [],
-  enableStars = true,
   enableSpotlight = true,
   enableBorderGlow = true,
   glowColor = "255, 255, 255", // White glow by default

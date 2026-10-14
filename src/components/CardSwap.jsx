@@ -52,7 +52,7 @@ const CardSwap = ({
   easing = "elastic",
   children,
 }) => {
-  const config =
+  const config = useMemo(() => (
     easing === "elastic"
       ? {
           ease: "elastic.out(0.6,0.9)",
@@ -69,12 +69,14 @@ const CardSwap = ({
           durReturn: 0.8,
           promoteOverlap: 0.45,
           returnDelay: 0.2,
-        };
+        }
+  ), [easing]);
 
   const childArr = useMemo(() => Children.toArray(children), [children]);
+  const childCount = childArr.length;
   const refs = useMemo(
-    () => childArr.map(() => React.createRef()),
-    [childArr.length]
+    () => Array.from({ length: childCount }, () => React.createRef()),
+    [childCount]
   );
 
   const order = useRef(Array.from({ length: childArr.length }, (_, i) => i));
