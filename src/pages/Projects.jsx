@@ -64,7 +64,6 @@ const projects = [
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState("description");
   const [showDetails, setShowDetails] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -78,14 +77,12 @@ function Projects() {
   const openModal = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
-    setActiveTab("description");
     setShowDetails(true);
   };
 
   const closeModal = () => {
     setSelectedProject(null);
     setCurrentImageIndex(0);
-    setActiveTab("description");
     setShowDetails(true);
   };
 
@@ -136,7 +133,7 @@ function Projects() {
               skewAmount={2}
               easing="elastic"
             >
-              {projects.map((project, index) => {
+              {projects.map((project) => {
                 const IconComponent = project.icon;
                 return (
                   <Card

@@ -9,7 +9,6 @@ import ProfilePicture from "../assets/ProfilePicture.webp";
 import coolPose from "../assets/cool-pose.webp";
 import handsome from "../assets/handsome.webp";
 import intern from "../assets/intern.webp";
-import utemSeoul from "../assets/utemSeoul.webp";
 import selfPort from "../assets/profile-pic-ws.webp";
 import gym from "../assets/gym.webp";
 
