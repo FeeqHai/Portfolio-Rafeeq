@@ -34,6 +34,21 @@ Example AI request: "Update the Projects page with the details I provide. Follow
 
 ## Content and code conventions
 
+### Portfolio design and interactions
+
+The landing page follows the approved October 2026 design: charcoal surfaces, off-white Inter typography, pale-lime accents, a short introduction, orbiting project previews, a scroll-driven project stack, and an alternating experience timeline. Keep glass effects limited to the navigation and dialog backdrop. Use the existing Lucide icons for consistent stroke weight.
+
+- `src/data/portfolio.js` is the source for featured projects, experience entries, and contact links. Use verified facts from the supplied resume; do not invent dates, outcomes, clients, or product screenshots. The Hospital Besut project deliberately uses “Diploma project” because an exact project year was not supplied.
+- `ProjectShowcase.jsx` progressively enhances the project list on wide, tall screens. Native scrolling drives the deck; numbered project controls support keyboard selection. At narrow widths, short heights, paused motion, or reduced-motion preference, every project is displayed in a normal list.
+- `ProjectDialog.jsx` uses a native modal dialog for focus containment, Escape dismissal, and focus restoration. Keep gallery controls and project text accessible without hover.
+- `OrbitCards.jsx` transforms actual screenshot thumbnails, pauses offscreen/in background tabs, and cleans up animation frames and observers. New thumbnails should be compressed assets with sensible dimensions.
+- Sound is optional, off by default, and only unlocked by an explicit click. Short tones are synthesized locally; no external audio services or recordings are used. Sound and motion choices persist locally when storage is available. The operating system's reduced-motion preference takes priority over the motion toggle.
+- The inverted cursor is a desktop enhancement. Preserve native cursors on touch devices, narrow layouts, dialogs, and reduced-motion settings. Keep all click targets and focus indicators usable without it.
+- Inter is served locally from `src/assets/fonts/` under the bundled OFL license. Keep the license when updating fonts.
+- Preserve all existing hash routes and the `/Portfolio-Rafeeq/` base. Homepage navigation uses hash-router section links. About, Academic, and the existing milestone gallery remain available; secondary pages load on demand.
+
+For this design, browser checks should cover intro dismissal, project selection in both scroll directions, every project dialog and gallery, Escape/focus restoration, timeline details, sound and motion preferences, mobile navigation, resume zoom/open/download, and direct-route refresh. Check a desktop viewport, a narrow mobile viewport, and a short viewport. Verify production output as well as the development server.
+
 ### Updating the resume
 
 `src/pages/Resume.jsx` uses `src/assets/Mohamad_Rafeeq_Haiqal_Resume.pdf` for both Open PDF and Download PDF. The scrollable preview is `src/assets/resume-preview.webp`, rendered from that same PDF so it works without a browser PDF plugin, including on mobile. When replacing the PDF, regenerate the preview from the new document, check every page (add more preview pages if the document grows), and update the page count, image dimensions, and displayed update date. Preserve the original PDF bytes. Verify zoom, scrolling, opening, and downloading before submitting.
@@ -61,7 +76,7 @@ There is no automated unit or browser test suite yet. Lint and build do not prov
 
 Leave the repository Actions variable `PORTFOLIO_PAGES_DEPLOY_ENABLED` absent or `false`. Once this workflow is merged, CI runs but deployment is skipped. Do not use legacy `npm run deploy`: it publishes through `gh-pages` and bypasses the new gate.
 
-Until this PR is merged, the previous workflow on `main` still exists and can deploy on pushes to `main`. The gate takes effect only when the new workflow replaces it. Avoid unrelated pushes to `main` while reviewing this change.
+The opt-in workflow is already on `main`. Continue to use feature branches and pull requests; leave the publishing variable unchanged while reviewing design work.
 
 ### Enable publishing later (owner action)
 

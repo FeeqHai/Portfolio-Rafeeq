@@ -1,37 +1,28 @@
-import { Outlet } from "react-router-dom";
-import LiquidChrome from "./LiquidChrome";
+import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
-function Layout() {
-  return (
-    <div className="min-h-screen flex flex-col bg-black text-white relative">
-      {/* Liquid Chrome Background */}
-      <div className="fixed inset-0 z-0 blur-sm brightness-[0.15]">
-        <LiquidChrome
-          baseColor={[0.1, 0.1, 0.1]}
-          speed={0.15}
-          amplitude={0.4}
-          frequencyX={3}
-          frequencyY={2}
-          interactive={true}
-        />
-      </div>
-
-      {/* Content - pointer-events-none lets mouse pass to background, re-enabled on children */}
-      <div className="relative z-10 flex flex-col min-h-screen pointer-events-none">
-        <div className="pointer-events-auto">
-          <Navbar />
-        </div>
-        <main className="flex-1 pt-24 pointer-events-auto">
-          <Outlet />
-        </main>
-        <div className="pointer-events-auto">
-          <Footer />
-        </div>
-      </div>
-    </div>
-  );
+import Preferences from "./Preferences";
+import InvertCursor from "./InvertCursor";
+function ScrollToRoute() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "instant" });
+      else window.scrollTo({ top: 0, behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+  return null;
 }
-
-export default Layout;
+export default function Layout() {
+  const { pathname } = useLocation();
+  return <Preferences><div className="portfolio-shell">
+    <a className="skip-link" href="#main-content" onClick={(event) => { event.preventDefault(); document.getElementById("main-content")?.focus(); }}>Skip to content</a>
+    <ScrollToRoute />
+    <Navbar key={pathname} />
+    <main id="main-content" tabIndex={-1}><Outlet /></main>
+    <Footer />
+    <InvertCursor />
+  </div></Preferences>;
+}

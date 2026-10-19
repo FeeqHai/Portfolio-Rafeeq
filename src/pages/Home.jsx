@@ -1,124 +1,26 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import BounceCards from "../components/BounceCards";
-
-// Import images properly
-import internImg from "../assets/intern.webp";
-import handsomeImg from "../assets/handsome.webp";
-import profilePicWsImg from "../assets/profile-pic-ws.webp";
-import coolPoseImg from "../assets/cool-pose.webp";
-import profilePictureImg from "../assets/ProfilePicture.webp";
-
-
-const images = [
-  internImg,
-  handsomeImg,
-  profilePicWsImg,
-  coolPoseImg,
-  profilePictureImg,
-];
-
-function Home() {
-  const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Responsive transform styles
-  const mobileTransforms = [
-    "rotate(-10deg) translate(-60px, -25px)",
-    "rotate(-5deg) translate(-30px, -32px)",
-    "rotate(0deg) translate(0px, -35px)",
-    "rotate(5deg) translate(30px, -32px)",
-    "rotate(10deg) translate(60px, -25px)",
-  ];
-
-  const desktopTransforms = [
-    "rotate(-12deg) translate(-140px, -35px)",
-    "rotate(-6deg) translate(-70px, -46px)",
-    "rotate(0deg) translate(0px, -50px)",
-    "rotate(6deg) translate(70px, -46px)",
-    "rotate(12deg) translate(140px, -35px)",
-  ];
-
-  return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="text-center max-w-3xl"
-      >
-        {/* Bounce Cards above name */}
-        <div className="flex justify-center mb-8">
-          <BounceCards
-            images={images}
-            containerWidth={isMobile ? 280 : 500}
-            containerHeight={isMobile ? 180 : 250}
-            animationDelay={1}
-            animationStagger={0.08}
-            easeType="elastic.out(1, 0.5)"
-            enableHover={true}
-            transformStyles={isMobile ? mobileTransforms : desktopTransforms}
-          />
-        </div>
-
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-2xl md:text-4xl font-bold text-white mb-6"
-        >
-          Mohd Rafeeq Haiqal Bin Mazri
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-xl md:text-xl text-white/70 mb-8"
-        >
-          "No man was ever wise by chance" <br />
-          -Lucius Annaeus Seneca
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-4"
-        >
-          <button
-            onClick={() => navigate("/about")}
-            className="px-8 py-3 rounded-xl text-black font-medium transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%)",
-              boxShadow: "0 4px 15px rgba(255,255,255,0.3)",
-            }}
-          >
-            About Me
-          </button>
-          <button
-            onClick={() => navigate("/projects")}
-            className="px-8 py-3 rounded-xl text-white/90 font-medium transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.2)",
-            }}
-          >
-            View Projects
-          </button>
-        </motion.div>
-      </motion.div>
-    </div>
-  );
+import { Link } from "react-router-dom";
+import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import OrbitCards from "../components/OrbitCards";
+import Intro from "../components/Intro";
+import ProjectShowcase from "../components/ProjectShowcase";
+import ExperienceTimeline from "../components/ExperienceTimeline";
+import SectionLabel from "../components/SectionLabel";
+export default function Home() {
+  return <div className="page-width home-page">
+    <Intro />
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero-copy"><div className="hero-eyebrow mono"><span>RAFEEQ HAIQAL / PORTFOLIO 2026</span><span className="eyebrow-line" /></div>
+        <h1 id="hero-title">Thoughtful code.<br />Useful experiences.</h1>
+        <p>Computer science student at UTeM,<br className="desktop-break" /> building practical web and mobile applications.</p>
+        <div className="button-row"><Link className="button button-primary" to="/#work">Explore work <ArrowRight size={18} /></Link><Link className="button" to="/resume">View resume <FileText size={17} /></Link></div>
+      </div>
+      <OrbitCards />
+    </section>
+    <ProjectShowcase />
+    <ExperienceTimeline />
+    <section className="about-section" id="about">
+      <SectionLabel number="03">A little about me</SectionLabel>
+      <div className="about-columns"><h2>Curious by nature.<br />Learning by building.</h2><div><p>I’m Rafeeq, a Computer Science student at Universiti Teknikal Malaysia Melaka, specialising in software development and expecting to graduate in 2027.</p><p>My work spans web, mobile and business applications. I’m currently developing the SRS Digital Patrol System for my final year project, and contributed to MasakGramPrompt, a nutrition-analysis dashboard using local language models.</p><div className="text-links"><Link to="/about">More about me <ArrowUpRight size={16} /></Link><Link to="/academic">Education <ArrowUpRight size={16} /></Link><Link to="/experience">Milestones <ArrowUpRight size={16} /></Link></div></div></div>
+    </section>
+  </div>;
 }
-
-export default Home;
