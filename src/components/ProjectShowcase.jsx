@@ -16,10 +16,13 @@ export default function ProjectShowcase() {
   const enhanced = desktop && motion;
   useEffect(() => {
     if (!enhanced) return;
-    const nodes = cards.current;
+    const track = root.current, scene = stage.current;
+    const nodes = [...cards.current];
     let frame = 0;
     function update() {
-      const top = root.current.getBoundingClientRect().top;
+      frame = 0;
+      if (!track.isConnected || !scene.isConnected) return;
+      const top = track.getBoundingClientRect().top;
       const step = window.innerHeight * 0.85;
       const progress = clamp((100 - top) / step, 0, projects.length - 1);
       const current = Math.min(projects.length - 1, Math.floor(progress + 0.5));
@@ -28,7 +31,7 @@ export default function ProjectShowcase() {
         const difference = index - progress;
         const behind = Math.max(difference, 0);
         const outgoing = Math.max(-difference, 0);
-        card.style.transform = `translate3d(0, ${-behind * 52 - outgoing * stage.current.clientHeight * 1.15}px, 0) scale(${1 - Math.min(behind, 3) * 0.065})`;
+        card.style.transform = `translate3d(0, ${-behind * 52 - outgoing * scene.clientHeight * 1.15}px, 0) scale(${1 - Math.min(behind, 3) * 0.065})`;
         card.style.opacity = String(clamp(1 - outgoing * 1.6, 0, 1));
       });
       frame = 0;
