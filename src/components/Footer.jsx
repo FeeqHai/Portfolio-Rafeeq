@@ -1,43 +1,15 @@
-import { Mail, Github, Linkedin } from "lucide-react";
-
-function Footer() {
-  return (
-    <footer className="bg-transparent border-t border-white/10 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-neutral-500 text-sm">
-            © {new Date().getFullYear()} Mohamad Rafeeq Haiqal Bin Mazri. All rights reserved.
-          </p>
-
-          <div className="flex space-x-4">
-            <a
-              href="mailto:oxbbn123@gmail.com"
-              target="_blank"
-              className="text-neutral-500 hover:text-white transition-colors"
-            >
-              <Mail size={20} />
-            </a>
-            <a
-              href="https://github.com/FeeqHai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-white transition-colors"
-            >
-              <Github size={20} />
-            </a>
-            <a
-              href="www.linkedin.com/in/rafeeq-haiqal-a187a624b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-white transition-colors"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+import { Link } from "react-router-dom";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { social } from "../data/portfolio";
+export default function Footer() {
+  return <footer className="site-footer page-width" id="contact">
+    <div className="contact-row"><h2>Let’s build something useful.</h2><div className="button-row">
+      <a className="button button-primary" href={`mailto:${social.email}`}>Email me <ArrowUpRight size={17} /></a>
+      <Link className="button" to="/resume">View resume <ArrowUpRight size={17} /></Link>
+    </div></div>
+    <div className="footer-bottom"><p>© {new Date().getFullYear()} Rafeeq Haiqal</p><span>Built with care, in Malaysia.</span><div className="social-links">
+      <a href={social.github} target="_blank" rel="noreferrer" aria-label="GitHub (opens in new tab)"><Github size={18} /></a>
+      <a href={social.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn (opens in new tab)"><Linkedin size={18} /></a>
+    </div></div>
+  </footer>;
 }
-
-export default Footer;
